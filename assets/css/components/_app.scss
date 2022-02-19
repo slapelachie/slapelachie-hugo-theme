@@ -16,3 +16,23 @@
 .app-header-menu-item {
   text-transform: lowercase;
 }
+
+.app-container {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 1000px) {
+  .app-container {
+    width: 100%;
+  }
+}
+
+.post-content img {
+  width: 80%;
+  display: block;
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}

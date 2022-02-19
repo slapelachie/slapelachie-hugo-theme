@@ -5,8 +5,7 @@
       {{- if ne .Type "page" }}
       <div class="post-meta">
         <div>
-          {{ partial "icon.html" (dict "ctx" $ "name" "calendar") }}
-          {{ .PublishDate.Format "Jan 2, 2006" }}
+          Published {{ .PublishDate.Format "Jan 2, 2006" }}
         </div>
         {{- with .Params.tags }}
         <div>
