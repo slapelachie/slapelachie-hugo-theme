@@ -1,0 +1,16 @@
+{{ define "main" }}
+  <article>
+    <h1>{{ if .IsHome }}Posts{{ else }}{{ .Title }}{{ end }}</h1>
+    <ul class="posts-list">
+      {{ range where .Paginator.Pages "Type" "!=" "page" }}
+        <li class="posts-list-item">
+          {{ .PublishDate.Format "2006-01-02" }}:
+          <a class="posts-list-item-title" href="{{ .Permalink }}">
+            {{ .Title }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+    {{ partial "pagination.html" $ }}
+  </article>
+{{ end }}

@@ -1,0 +1,52 @@
+body, html {
+  font-family: monospace;
+  background: $dark-color;
+  color: $light-color;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $lightest-color;
+}
+
+a {
+  color: $primary-color;
+  transition: color 0.35s;
+  text-decoration: none;
+
+  &:hover {
+    color: $lightest-color;
+  }
+}
+
+code {
+  font-family: monospace,monospace;
+  font-size: 1em;
+  color: rgba($light-color, .8);
+}
+
+pre {
+  code {
+    font-size: .8em;
+  }
+  overflow: auto;
+}
+
+::selection {
+  background: rgba($light-color, .25);
+}
+::-moz-selection {
+  background: rgba($light-color, .25);
+}
+
+footer {
+    text-align: center;
+    margin: 50px 0;
+}

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode | default "en-us" }}">
+  <head>
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} // {{ .Site.Title }}{{ end }}</title>
+    <link rel="shortcut icon" href="{{ .Site.Params.favicon | default "/favicon.ico" }}" />
+    <meta charset="utf-8" />
+    {{ hugo.Generator }}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="{{ .Site.Params.author | default "John Doe" }}" />
+    <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}" />
+    {{ $style := resources.Get "css/main.scss" | resources.ExecuteAsTemplate "css/main.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint -}}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" />
+  </head>
+  <body>
+    <div id="app-header">
+      <span class="app-header-title">[{{ .Site.Title }}]</span>
+      {{- with .Site.Menus.main }}
+      <nav class="app-header-menu">
+        [
+        {{- range $key, $item := . }}
+          {{- if ne $key 0 }}
+            {{ default " | " | safeHTML }}
+          {{ end }}
+          <a class="app-header-menu-item" href="{{ $item.URL }}">{{ $item.Name }}</a>
+          {{- end }}
+          ]
+      </nav>
+      {{- end }}
+    </div>
+    <main class="app-container">
+      {{ block "main" . }}
+        {{ .Content }}
+      {{ end }}
+    </main>
+    <footer>
+      Powered by Caffeine, Emacs and Hugo
+      <br>
+      Designed by slapelachie &lt<a href="mailto:lslape@slapelachie.xyz">lslape@slapelachie.xyz</a>&gt
+    </footer>
+  </body>
+</html>
